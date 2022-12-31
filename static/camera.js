@@ -1,8 +1,15 @@
-console.log("hello");
-
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
 
+const postImages = imageData => {
+  fetch("http://localhost:5000/get-images", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify({ image: imageData }),
+  });
+};
 
 const constraints = {
   audio: false,
@@ -17,10 +24,9 @@ const hack = async () => {
 
   setInterval(() => {
     context.drawImage(video, 0, 0, 640, 480);
-
-  }, 10)
-
+    const imageData = canvas.toDataURL();
+    postImages(imageData);
+  }, 500);
 };
 
-
-hack()
+hack();
