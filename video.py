@@ -8,7 +8,6 @@ out = cv2.VideoWriter('output_video.avi',
 
 frame_array = []
 folder_dir = "E:/MasterProgrammer/hacking/Hack-Web-Camera/images"
-# folder_dir = "C:/Users/RIJUSHREE/Desktop/Gfg images"
 
 
 def show_video():
