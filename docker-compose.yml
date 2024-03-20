@@ -1,0 +1,9 @@
+version: '1'
+
+services:
+  hack-web-camera:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app

